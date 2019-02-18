@@ -1,0 +1,62 @@
+accounts:
+  - awsAccessKey: "abb"
+    awsSecretKey: "abc"
+    displayAccountName: "TestAccount"
+    regions: ["us-east-1", "us-west-1", "us-west-2"]
+
+credentialsDecryptionConfig:
+    enableDecryption: "true"
+    decryptionKey: "test"
+    
+proxyConfig:
+    host:
+    port:
+    username:
+    password:
+    
+ec2InstanceNameConfig:
+    useNameInMetrics: "false"
+    tagFilterName: "tag-key"
+    tagKey: "Name"
+    
+metricsConfig:
+    includeMetrics:
+       - name: "CPUUtilization"
+         alias: "CPUUtilization"
+         statType: "ave"
+         aggregationType: "OBSERVATION"
+         timeRollUpType: "CURRENT"
+         clusterRollUpType: "COLLECTIVE"
+         delta: false
+         multiplier: 1
+       - name: "NetworkOut"
+       - name: "NetworkIn"
+
+    metricsTimeRange:
+      startTimeInMinsBeforeNow: 5
+      endTimeInMinsBeforeNow: 0
+
+    getMetricStatisticsRateLimit: 400
+
+    maxErrorRetrySize: 0
+
+cloudWatchMonitoring: "Basic"
+cloudWatchMonitoringInterval: 0
+
+concurrencyConfig:
+  noOfAccountThreads: 3
+  noOfRegionThreadsPerAccount: 3
+  noOfMetricThreadsPerRegion: 3
+
+regionEndPoints:
+  ap-southeast-1: monitoring.ap-southeast-1.amazonaws.com
+  ap-southeast-2: monitoring.ap-southeast-2.amazonaws.com
+  ap-northeast-1: monitoring.ap-northeast-1.amazonaws.com
+  eu-central-1: monitoring.eu-central-1.amazonaws.com
+  eu-west-1: monitoring.eu-west-1.amazonaws.com
+  us-east-1: monitoring.us-east-1.amazonaws.com
+  us-west-1: monitoring.us-west-1.amazonaws.com
+  us-west-2: monitoring.us-west-2.amazonaws.com
+  sa-east-1: monitoring.sa-east-1.amazonaws.com
+
+metricPrefix: "Custom Metrics|Amazon EC2|"

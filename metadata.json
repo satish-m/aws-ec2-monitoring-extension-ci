@@ -1,0 +1,23 @@
+{
+	"id" : "aws-ec2-monitoring-extension",
+	"type" : "monitor",
+	"displayName" : "AWS EC2 Monitoring Extension",
+	"description" : "An AppDynamics extension to be used with a stand alone Java machine agent to provide metrics for Amazon EC2.",
+	"version" : "1.0.4",
+	"downloadLink" : "https://github.com/Appdynamics/aws-ec2-monitoring-extension/releases/download/1.0.4/awsec2monitor-1.0.4.zip",
+	"imageLink" : "https://www.appdynamics.com/media/uploaded-images/1517464098/ec2.png",
+	"configs" : [
+		{
+			"name" : "monitor.xml",
+			"link" : "https://raw.githubusercontent.com/Appdynamics/aws-ec2-monitoring-extension/master/src/main/resources/conf/monitor.xml"
+		},
+		{
+			"name" : "config.yml",
+			"link" : "https://raw.githubusercontent.com/Appdynamics/aws-ec2-monitoring-extension/master/src/main/resources/conf/config.yaml"
+		},
+		{
+			"name" : "region-endpoints.yml",
+			"link" : "https://raw.githubusercontent.com/Appdynamics/aws-ec2-monitoring-extension/master/src/main/resources/conf/region-endpoints.yaml"
+		}
+	]
+}
