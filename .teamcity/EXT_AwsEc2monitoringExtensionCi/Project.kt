@@ -1,5 +1,6 @@
 package EXT_AwsEc2monitoringExtensionCi
 
+import EXT_AwsEc2monitoringExtensionCi.buildTypes.*
 import EXT_AwsEc2monitoringExtensionCi.vcsRoots.EXT_AwsEc2monitoringExtensionCi_VCS
 import jetbrains.buildServer.configs.kotlin.v2018_2.Project
 import jetbrains.buildServer.configs.kotlin.v2018_2.projectFeatures.VersionedSettings
@@ -13,6 +14,12 @@ object Project : Project({
 
     vcsRoot(EXT_AwsEc2monitoringExtensionCi_VCS)
 
+    buildType(EXT_AwsEc2monitoringExtensionCi_CleanBuild)
+    buildType(EXT_AwsEc2monitoringExtensionCi_SetupInLinux)
+    buildType(EXT_AwsEc2monitoringExtensionCi_IntegrationTestInLinux)
+    buildType(EXT_AwsEc2monitoringExtensionCi_StopLinux)
+    buildType(EXT_AwsEc2monitoringExtensionCi_Publish)
+
     features {
         versionedSettings {
             id = "PROJECT_EXT_5"
@@ -24,4 +31,12 @@ object Project : Project({
             storeSecureParamsOutsideOfVcs = true
         }
     }
+
+    buildTypesOrder = arrayListOf(
+            EXT_AwsEc2monitoringExtensionCi_CleanBuild,
+            EXT_AwsEc2monitoringExtensionCi_SetupInLinux,
+            EXT_AwsEc2monitoringExtensionCi_IntegrationTestInLinux,
+            EXT_AwsEc2monitoringExtensionCi_StopLinux,
+            EXT_AwsEc2monitoringExtensionCi_Publish
+    )
 })
