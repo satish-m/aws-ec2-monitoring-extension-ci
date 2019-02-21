@@ -15,7 +15,21 @@ import com.appdynamics.extensions.aws.collectors.NamespaceMetricStatisticsCollec
 import com.appdynamics.extensions.aws.ec2.config.EC2Configuration;
 import com.appdynamics.extensions.aws.ec2.providers.EC2InstanceNameProvider;
 import com.appdynamics.extensions.aws.metric.processors.MetricsProcessor;
+import com.google.common.collect.Lists;
+import com.singularity.ee.agent.systemagent.api.exception.TaskExecutionException;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
+
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author Florencio Sarmiento
@@ -53,8 +67,8 @@ public class EC2Monitor extends SingleNamespaceCloudwatchMonitor<EC2Configuratio
     }
 
     @Override
-    protected int getTaskCount() {
-        return 3;
+    protected List<Map<String, ?>> getServers() {
+        return Lists.newArrayList();
     }
 
     @Override
@@ -73,7 +87,9 @@ public class EC2Monitor extends SingleNamespaceCloudwatchMonitor<EC2Configuratio
                 config.getConcurrencyConfig(),
                 config.getMetricsConfig(),
                 metricsProcessor,
-                config.getMetricPrefix())
+                config.getMetricPrefix(),
+                config.getCustomDashboard(),
+                config.getControllerInfo())
                 .withCredentialsDecryptionConfig(config.getCredentialsDecryptionConfig())
                 .withProxyConfig(config.getProxyConfig())
                 .build();
@@ -89,4 +105,41 @@ public class EC2Monitor extends SingleNamespaceCloudwatchMonitor<EC2Configuratio
                 config.getMetricsConfig().getIncludeMetrics(),
                 config.getEc2Instance());
     }
+
+    public static void main(String[] args) throws TaskExecutionException, IOException {
+
+        ConsoleAppender ca = new ConsoleAppender();
+        ca.setWriter(new OutputStreamWriter(System.out));
+        ca.setLayout(new PatternLayout("%-5p [%t]: %m%n"));
+        ca.setThreshold(Level.DEBUG);
+        LOGGER.getRootLogger().addAppender(ca);
+
+
+        /*FileAppender fa = new FileAppender(new PatternLayout("%-5p [%t]: %m%n"), "cache.log");
+        fa.setThreshold(Level.DEBUG);
+        LOGGER.getRootLogger().addAppender(fa);*/
+
+
+        EC2Monitor monitor = new EC2Monitor();
+
+
+        Map<String, String> taskArgs = new HashMap<>();
+        taskArgs.put("config-file", "/Users/Muddam/AppDynamics/CI/aws-ec2-monitoring-extension-ci/src/main/resources/conf/config.yml");
+
+        //monitor.execute(taskArgs, null);
+
+        ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
+        scheduler.scheduleAtFixedRate(new Runnable() {
+            public void run() {
+                try {
+                    monitor.execute(taskArgs, null);
+                } catch (Exception e) {
+                    LOGGER.error("Error while running the task", e);
+                }
+            }
+        }, 2, 60, TimeUnit.SECONDS);
+
+    }
+
+
 }

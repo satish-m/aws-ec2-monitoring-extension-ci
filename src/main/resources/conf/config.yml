@@ -6,15 +6,15 @@
 metricPrefix: "Server|Component:<COMPONENT_ID>|Custom Metrics|Amazon EC2|"
 
 accounts:
-  - awsAccessKey: ""
-    awsSecretKey: ""
+  - awsAccessKey: "${AWS_ACCESS_KEY}"
+    awsSecretKey: "${AWS_SECRET_KEY}"
     displayAccountName: "AppD"
 
     # Regions where ec2 is registered
     # Allowed values: ap-southeast-1, ap-southeast-2, ap-northeast-1, eu-central-1,
     #                 us-east-1, eu-west-1, us-west-1, us-west-2, sa-east-1
     #
-    regions: ["us-east-1"]
+    regions: ["eu-central-1"]
 
 credentialsDecryptionConfig:
     enableDecryption: "false"
@@ -131,3 +131,34 @@ metricsConfig:
     # (ex: 5xx error responses from a service) or throttling errors
     #
     maxErrorRetrySize: 0
+
+# Generate a custom dashboard based on the provided template
+customDashboard:
+    enabled: false
+    dashboardName: "AWS EC2 Monitor Dashboard"
+    sslCertCheckEnabled: false
+    # Update the path to the dashboard file.
+    pathToSIMDashboard: "monitors/AWSELBMonitor/normalDashboard.json"
+    pathToNormalDashboard: "monitors/AWSELBMonitor/normalDashboard.json"
+    periodicDashboardCheckInSeconds: 300
+
+# To upload the dashboard, please create a user from Controller UI or
+# add the credentials of an existing user.
+
+controllerInfo:
+    controllerHost: "host"
+    controllerPort: 9090
+    controllerSslEnabled: false
+    enableOrchestration: false
+    uniqueHostId: ""
+    username: "username"
+    password: "password"
+    encryptedPassword: ""
+    encryptionKey: ""
+    accountAccessKey: ""
+    account: "account"
+    machinePath: ""
+    simEnabled: false
+    applicationName: "application"
+    tierName: "tier"
+    nodeName: "node"
