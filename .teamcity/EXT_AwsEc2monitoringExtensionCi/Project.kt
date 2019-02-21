@@ -1,8 +1,6 @@
 package EXT_AwsEc2monitoringExtensionCi
 
-import EXT_AwsEc2monitoringExtensionCi.vcsRoots.*
 import EXT_AwsEc2monitoringExtensionCi.vcsRoots.EXT_AwsEc2monitoringExtensionCi_VCS
-import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.Project
 import jetbrains.buildServer.configs.kotlin.v2018_2.projectFeatures.VersionedSettings
 import jetbrains.buildServer.configs.kotlin.v2018_2.projectFeatures.versionedSettings

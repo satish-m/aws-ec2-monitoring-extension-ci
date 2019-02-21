@@ -1,6 +1,5 @@
 package EXT_AwsEc2monitoringExtensionCi.vcsRoots
 
-import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.vcs.GitVcsRoot
 
 object EXT_AwsEc2monitoringExtensionCi_VCS : GitVcsRoot({
