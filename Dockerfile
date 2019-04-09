@@ -16,12 +16,12 @@ RUN echo "hello world"
 RUN echo "${APPDYNAMICS_AGENT_ACCOUNT_NAME}"
 
 
-RUN export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
-RUN export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
-RUN export AWS_DEFAULT_REGION="us-east-1"
+#RUN export AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
+#RUN export AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
+#RUN export AWS_DEFAULT_REGION="us-east-1"
 
-RUN echo "aws access key: ${AWS_ACCESS_KEY_ID}"
-RUN echo "${MACHINE_AGENT_PROPERTIES}"
+#RUN echo "aws access key: ${AWS_ACCESS_KEY_ID}"
+#RUN echo "${MACHINE_AGENT_PROPERTIES}"
 
 RUN terraform plan
 RUN terraform apply -auto-approve
