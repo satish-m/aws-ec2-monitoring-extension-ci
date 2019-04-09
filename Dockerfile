@@ -1,7 +1,7 @@
 FROM appdynamics/machine:4.5 AS MA
 
-RUN export TF_VAR_access_key="${AWS_ACCESS_KEY_ID}"
-RUN export TF_VAR_secret_key="${AWS_SECRET_ACCESS_KEY}"
+RUN export TF_VAR_AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
+RUN export TF_VAR_AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
 RUN export TF_VAR_region="us-east-1"
 
 RUN apt-get update
