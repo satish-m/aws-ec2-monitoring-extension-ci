@@ -1,6 +1,9 @@
+variable "AWS_ACCESS_KEY_ID" {}
+variable "AWS_SECRET_ACCESS_KEY" {}
+
 provider "aws" {
-    access_key = "${shell.env.AWS_ACCESS_KEY_ID}"
-    secret_key = "${shell.env.AWS_SECRET_ACCESS_KEY}"
+    access_key = "${var.AWS_ACCESS_KEY_ID}"
+    secret_key = "${var.AWS_SECRET_ACCESS_KEY}"
 	region = "us-east-1"
 }
 
