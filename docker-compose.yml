@@ -12,9 +12,6 @@ services:
      - MACHINE_AGENT_PROPERTIES=-Dappdynamics.sim.enabled=true -Dappdynamics.docker.enabled=true
      - AWS_ACCESS_KEY_ID
      - AWS_SECRET_ACCESS_KEY
-     - TF_VAR_AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-     - TF_VAR_AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-     - TF_VAR_AWS_DEFAULT_REGION=us-east-1
      - EC2_INSTANCE_NAME=aws_btd_terraform
     build:
       context: .
