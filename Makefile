@@ -4,7 +4,7 @@ DOCKER_STOP=$(DOCKER_COMPOSE) down
 
 dockerRun: ## Run MA in docker
 	@echo starting container ##################%%%%%%%%%%%%%%%%%%%&&&&&&&&&&&&&&&&&&&&&&
-	@eco AWS Access key is: $(AWS_ACCESS_KEY_ID)
+	@echo AWS Access key is: $(AWS_ACCESS_KEY_ID)
 	${DOCKER_RUN}
 	@echo started container ##################%%%%%%%%%%%%%%%%%%%&&&&&&&&&&&&&&&&&&&&&&
 
