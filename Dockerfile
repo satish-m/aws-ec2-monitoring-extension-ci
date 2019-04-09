@@ -4,6 +4,8 @@ RUN export TF_VAR_AWS_ACCESS_KEY_ID="${AWS_ACCESS_KEY_ID}"
 RUN export TF_VAR_AWS_SECRET_ACCESS_KEY="${AWS_SECRET_ACCESS_KEY}"
 RUN export TF_VAR_region="us-east-1"
 
+RUN echo "AWS access key is ${AWS_ACCESS_KEY_ID}"
+
 RUN apt-get update
 RUN apt-get -y install wget unzip
 RUN wget https://releases.hashicorp.com/terraform/0.11.11/terraform_0.11.11_linux_amd64.zip
