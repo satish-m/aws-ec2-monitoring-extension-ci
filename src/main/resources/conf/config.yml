@@ -1,13 +1,13 @@
 #prefix used to show up metrics in AppDynamics. This will create this metric in all the tiers, under this path
-#metricPrefix: "Custom Metrics|Amazon EC2|"
+metricPrefix: "Custom Metrics|Amazon EC2|"
 
 #This will create it in specific Tier/Component. Make sure to replace <COMPONENT_ID> with the appropriate one from your environment.
 #To find the <COMPONENT_ID> in your environment, please follow the screenshot https://docs.appdynamics.com/display/PRO42/Build+a+Monitoring+Extension+Using+Java
-metricPrefix: "Server|Component:<COMPONENT_ID>|Custom Metrics|Amazon EC2|"
+#metricPrefix: "Server|Component:<COMPONENT_ID>|Custom Metrics|Amazon EC2|"
 
 accounts:
-  - awsAccessKey: "${AWS_ACCESS_KEY}"
-    awsSecretKey: "${AWS_SECRET_KEY}"
+  - awsAccessKey: "${AWS_ACCESS_KEY_ID}"
+    awsSecretKey: "${AWS_SECRET_ACCESS_KEY}"
     displayAccountName: "AppD"
 
     # Regions where ec2 is registered

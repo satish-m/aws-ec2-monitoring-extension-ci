@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <project>
   <modelVersion>4.0.0</modelVersion>
-  <name>EXT_AwsEc2monitoringExtensionCi Config DSL Script</name>
-  <groupId>EXT_AwsEc2monitoringExtensionCi</groupId>
-  <artifactId>EXT_AwsEc2monitoringExtensionCi_dsl</artifactId>
+  <name>AwsExtensionsCi Config DSL Script</name>
+  <groupId>AwsExtensionsCi</groupId>
+  <artifactId>AwsExtensionsCi_dsl</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <parent>
@@ -22,7 +22,7 @@
     </repository>
     <repository>
       <id>teamcity-server</id>
-      <url>http://127.0.0.1:8111/app/dsl-plugins-repository</url>
+      <url>http://localhost:8111/app/dsl-plugins-repository</url>
       <snapshots>
         <enabled>true</enabled>
       </snapshots>

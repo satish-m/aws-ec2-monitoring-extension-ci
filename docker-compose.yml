@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  machine:
+#    image: appdynamics/machine:4.4
+    environment:
+     - APPDYNAMICS_AGENT_ACCOUNT_NAME
+     - APPDYNAMICS_AGENT_ACCOUNT_ACCESS_KEY
+     - APPDYNAMICS_CONTROLLER_HOST_NAME
+     - APPDYNAMICS_CONTROLLER_SSL_ENABLED
+     - APPDYNAMICS_CONTROLLER_PORT
+     - MACHINE_AGENT_PROPERTIES=-Dappdynamics.sim.enabled=true -Dappdynamics.docker.enabled=true
+     - AWS_ACCESS_KEY_ID
+     - AWS_SECRET_ACCESS_KEY
+     - EC2_INSTANCE_NAME=aws_btd_terraform
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - /:/hostroot:ro
+      - /var/run/docker.sock:/var/run/docker.sock
